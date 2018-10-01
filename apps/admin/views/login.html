@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <script src="{$getAppUrl('static')}/script/jquery-3.3.1.min.js"></script>
+        <script src="{$getAppUrl('static')}/bootstrap/js/bootstrap.min.js"></script>
+        <link href="{$getAppUrl('static')}/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="{$getAppUrl('static')}/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" />
+        
+    </head>
+    <body>
+        <script server>
+            (function(model,req,res,next){
+                model.form.data={};
+                return {
+                    post:function(data){
+                        debugger;
+                        var q=require("quicky");
+                        var ret=q.sys.login("",data.username,data.password);
+                        if(ret.error && ret.error.code=="user_not_found"){
+                            model.form.error="res:::(User was not found)";
+                            model.form.data={
+                                username:data.username
+                            };
+                        }
+                        else {
+                            req.setUser(ret);
+                            if(req.query.ret){
+                                res.redirect(req.query.ret);
+                            }
+                        }
+                        
+                    }
+                }
+            });
+        </script>
+        <form action="" method="POST" role="form" style="max-width:200px;">
+            <legend>Form title</legend>
+        
+            <div class="form-group">
+                <label for="">label</label>
+                <input type="text" name="username" value="{$form.data.username}" class="form-control" id="" placeholder="Input field">
+            </div>
+            <div class="form-group">
+                <label for="">label</label>
+                <input type="password" name="password" class="form-control" id="" placeholder="Input field">
+            </div>
+            
+        
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+            <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <strong>res:::(Error)</strong>{$form.error}
+                </div>
+        
+        
+        </form>
+        
+        
+        
+    </body>
+ 
+    
+</html>

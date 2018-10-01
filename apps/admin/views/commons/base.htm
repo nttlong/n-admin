@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>res:::(Administrator)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% include "commons/scripts.html" %}
+    <script server>
+            (function(model,req,res,next){
+                debugger;
+                var q=require("quicky");
+                if(!q.sys.findUser("","root")){
+                    q.sys.createUser(
+                        "",
+                        "root",
+                        "root",
+                        "",
+                        "Sys administrator",
+                        true,true);
+                }
+                if(req.getUser()==undefined){
+                    res.redirect(req.getAppUrl()+"/login?ret="+escape(encodeURI(req.getFullUrl())));
+                }
+                
+                return {
+        
+                }
+            });
+        </script>
+</head>
+<body>
+        {% include "commons/menu.html" %}
+        {% block body %}{% endblock %}
+</body>
+</html>
