@@ -8,7 +8,10 @@ module.exports =[
                 page:"page/users"
             },{
                 caption:"Customers",
-                page:"page/custemers"
+                page:"page/customers"
+            },{
+                caption:"Email",
+                page:"page/email"
             }
         ]
         
