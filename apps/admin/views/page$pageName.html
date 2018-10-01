@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <script server>
+        (function(model,req,res,next){
+            debugger;
+            model.pageName="pages/"+req.params.pageName+".html";
+        })
+    </script> 
+    {(loadFile(pageName))}   
+</body>
+</html>
