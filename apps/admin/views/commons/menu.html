@@ -1,4 +1,9 @@
-
+<script server>
+    (function(model,req,res,next){
+        debugger;
+        model.menu=model.loadModule("~/libs/menu.js");
+    })
+</script>
 <nav class="navbar navbar-default" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -8,25 +13,26 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Title</a>
+        <a class="navbar-brand" href="#">res:::(Admin)</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
+         <ul class="nav navbar-nav navbar-left">
+            {% for item in menu%}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{(getAppRes(item.caption))} <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        {%for subItem in item.items%}
+                            <li><a href="#page={(subItem.page)}">{(getAppRes(subItem.caption))}</a></li>
+                        {%endfor%}
+                    </ul>
+                </li>
+            {%endfor%}
         </ul>
-        <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-        </form>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Link</a></li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{(user.displayName)} <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="#">Action</a></li>
                     <li><a href="#">Another action</a></li>

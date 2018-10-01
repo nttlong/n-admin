@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html>
+<html ng-app="admin">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +8,6 @@
     {% include "commons/scripts.html" %}
     <script server>
             (function(model,req,res,next){
-                debugger;
                 var q=require("quicky");
                 if(!q.sys.findUser("","root")){
                     q.sys.createUser(
@@ -23,15 +21,29 @@
                 if(req.getUser()==undefined){
                     res.redirect(req.getAppUrl()+"/login?ret="+escape(encodeURI(req.getFullUrl())));
                 }
-                
+                model.user=req.getUser();
                 return {
         
                 }
             });
         </script>
 </head>
-<body>
+<body ng-controller="admin">
         {% include "commons/menu.html" %}
         {% block body %}{% endblock %}
+        <div c-template url="{{$root.url}}"></div>
+        <script>
+            var mdl=angular.module("admin",["c-ui"]);
+            mdl.controller("admin",["$dialog","$scope",function(dialog,$scope){
+                history_navigator($scope.$root);
+                debugger; $scope.$root.$history
+                $scope.$root.$history.change(function(data){
+                    $scope.$root.url=data.page;
+                    $scope.$root.$applyAsync();
+                })
+                console.log($scope.$id);
+            }]);
+
+        </script>
 </body>
 </html>
