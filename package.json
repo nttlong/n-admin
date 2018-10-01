@@ -1,0 +1,22 @@
+{
+  "name": "test-002",
+  "version": "1.0.0",
+  "description": "\"# n-admin\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nttlong/n-admin.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nttlong/n-admin/issues"
+  },
+  "homepage": "https://github.com/nttlong/n-admin#readme",
+  "dependencies": {
+    "quicky": "git+https://github.com/nttlong/njs-q.git"
+  }
+}
