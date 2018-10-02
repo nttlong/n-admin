@@ -36,12 +36,11 @@
             var mdl=angular.module("admin",["c-ui"]);
             mdl.controller("admin",["$dialog","$scope",function(dialog,$scope){
                 history_navigator($scope.$root);
-                debugger; $scope.$root.$history
                 $scope.$root.$history.change(function(data){
                     $scope.$root.url=data.page;
                     $scope.$root.$applyAsync();
                 })
-                console.log($scope.$id);
+                
             }]);
 
         </script>

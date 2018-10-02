@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/nttlong/n-admin#readme",
   "dependencies": {
+    "q-coll": "git+https://github.com/nttlong/n-queryable.git",
     "quicky": "git+https://github.com/nttlong/njs-q.git"
   }
 }

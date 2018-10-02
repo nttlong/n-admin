@@ -46,11 +46,12 @@
             
         
             <button type="submit" class="btn btn-primary">Submit</button>
-
+            {% if form.error %}
             <div class="alert alert-danger">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     <strong>res:::(Error)</strong>{(form.error)}
                 </div>
+            {% endif %}
         
         
         </form>
