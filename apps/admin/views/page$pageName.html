@@ -1,9 +1,15 @@
 <div>
     <script server>
         (function(model,req,res,next){
-            debugger;
+          
             model.pageName="pages/"+req.params.pageName+".html";
+            model.serviceUrl="/pages/"+req.params.pageName;
         })
-    </script> 
+    </script>
+    <script>
+        (function(scope){
+            scope.ws=ajax().create("{(serviceUrl)}");
+        })
+    </script>
     {(loadHtml(pageName)|safe)}
-</div>>
+</div>

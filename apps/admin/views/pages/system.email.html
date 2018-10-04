@@ -1,12 +1,7 @@
-{% extends "commons/base.htm" %}
-{% block body %}
-    <script>
-       
-    </script>
-{% endblock %}
 <script server>
     (function(model,req,res,next){
         debugger;
+        var email=require("quicky/q-email");
         return {
             ajax:{
                 get:function(data){
@@ -14,5 +9,12 @@
                 }
             }
         }
+
+        
+    });
+</script>
+<script>
+    (function(scope){
+        console.log(scope);
     });
 </script>

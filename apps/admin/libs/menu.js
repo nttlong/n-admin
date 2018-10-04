@@ -5,20 +5,23 @@ module.exports =[
         items:[
             {
                 caption:"Users",
-                page:"page/users"
+                page:"page/system.users"
             },{
                 caption:"Customers",
                 page:"page/customers"
             },{
                 caption:"Email",
-                page:"page/email"
+                page:"page/system.email"
             }
         ]
         
     },{
         caption:"Linquictisc",
         items :[
-            
+            {
+                caption:"By application",
+                page:"page/linquictics.by_app"
+            }
         ]
 
     }

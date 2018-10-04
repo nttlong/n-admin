@@ -1,0 +1,25 @@
+<script server>
+    (function(model,req,res,next){
+        return {
+            ajax:{
+                items:function(data){
+                    debugger;
+                    var users=require("quicky/q-system");
+                }
+            }
+        }
+        
+    })
+</script>
+<div>
+    <button ng-click="doLoadData()"></button>
+</div>
+<script>
+    (function(scope){
+        scope.doLoadData=function(){
+            scope.ws.call("items").done(function(res){
+                console.log(data);
+            });
+        }
+    })
+</script>
