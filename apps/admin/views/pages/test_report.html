@@ -1,17 +1,33 @@
+
+
+<div class="container">
+    
+    <div class="btn-toolbar pull-right">
+        <div class="btn-group"><button type="button" class="btn btn-default" ng-click="doPreview()">Preview</button></div>
+        <div class="btn-group"><button type="button" class="btn btn-default" ng-click="doPrint()">Print</button></div>
+        <div class="btn-group"></div>
+    </div>
+    
+</div>
+
 <div>
     
-    <button type="button" class="btn btn-default" ng-click="doTest()">Test Report</button>
-    <button type="button" class="btn btn-default" ng-click="doPrint()">Print</button>
+    
+    
     
 </div>
 <script>
     (function(scope){
-        scope.doTest=function(){
+        scope.doPreview=function(){
             
-            scope.ws.call("testReport").done(function(res){
+            scope.ws.call("preViewReport").done(function(res){
 
                 console.log(scope);
                 var iframe = document.createElement('iframe');
+                $(iframe).css({
+                    width:"100%",
+                    height:"400px"
+                })
                 $(iframe).attr("id","frm_print");
                 var html = res;
                 document.body.appendChild(iframe);
@@ -31,7 +47,7 @@
      (function(model,req,res,next){
          return {
              ajax:{
-                testReport:function(data){
+                preViewReport:function(data){
                     debugger;
                     var x=require("quicky/jasper-report").jasper(
                         "http://172.16.7.67:8080/jasperserver",
