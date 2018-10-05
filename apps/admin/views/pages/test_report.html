@@ -54,7 +54,15 @@
                         "jasperadmin",
                         "jasperadmin"
                     );
-                    var content=x.reports.run("Danh_sach_nhan_vien","html");
+                    var content=x.reports.run("reports/Danh_sach_nhan_vien","html");
+                    var pdf = require('html-pdf');
+                    pdf.create(content,{
+                        "phantomPath":"".getRootDir("node_modules/phantomjs/bin/phantomjs")
+                    }).toFile('businesscard.pdf', function(err, res) {
+                        debugger;
+                        if (err) return console.log(err);
+                        console.log(res); // { filename: '/app/businesscard.pdf' }
+                    });
                     return content;
                 }
              }
