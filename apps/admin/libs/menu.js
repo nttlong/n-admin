@@ -24,5 +24,13 @@ module.exports =[
             }
         ]
 
+    },{
+        caption:"test",
+        items:[
+            {
+                caption:"report",
+                page:"page/test_report"
+            }
+        ]
     }
 ];

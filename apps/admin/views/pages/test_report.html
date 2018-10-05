@@ -1,0 +1,47 @@
+<div>
+    
+    <button type="button" class="btn btn-default" ng-click="doTest()">Test Report</button>
+    <button type="button" class="btn btn-default" ng-click="doPrint()">Print</button>
+    
+</div>
+<script>
+    (function(scope){
+        scope.doTest=function(){
+            
+            scope.ws.call("testReport").done(function(res){
+
+                console.log(scope);
+                var iframe = document.createElement('iframe');
+                $(iframe).attr("id","frm_print");
+                var html = res;
+                document.body.appendChild(iframe);
+                iframe.contentWindow.document.open();
+                iframe.contentWindow.document.write(html);
+                iframe.contentWindow.document.close();
+                scope.iframe=iframe;
+            console.log(res);
+        });
+        }
+        scope.doPrint=function(){
+            $(scope.iframe).get(0).contentWindow.print();
+        }
+    });
+</script>
+<script server>
+     (function(model,req,res,next){
+         return {
+             ajax:{
+                testReport:function(data){
+                    debugger;
+                    var x=require("quicky/jasper-report").jasper(
+                        "http://172.16.7.67:8080/jasperserver",
+                        "jasperadmin",
+                        "jasperadmin"
+                    );
+                    var content=x.reports.run("Danh_sach_nhan_vien","html");
+                    return content;
+                }
+             }
+         }
+     });   
+</script>
